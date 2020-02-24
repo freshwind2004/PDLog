@@ -1,0 +1,155 @@
+{% extends "theme.html" %}
+
+{% load thumbnail %}
+
+{% block title %}{{blog.title}}{% endblock title %}
+
+{% block footer_script %}
+<script>
+$(function () {
+    $('#submit_comment').click(function () {
+		var content = $('#content').val();
+        if(content!=''){
+            comment = {
+            'content': content,
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+            };
+            $.ajax({
+                url: '{% url 'blog_comment' blog.id %}',
+                type: 'post',
+                data: comment,
+                success: function (response) { 
+                    var message = response['message']
+                    var comment_html = 
+                        '<div class="comment mb-1">' +
+                            '<div class="comment-author">' +
+                                '<span class="text-info mb-1">您刚发表的评论：</span>' +
+                            '</div>' +
+                            '<div class="mb-1">' +
+                            content +
+                            '</div>' +
+                        '</div>' +
+                        '<div id="comment-placeholder"></div>'
+                    $("#comment-response").text(message); 
+                    $("#comment-placeholder").replaceWith(comment_html);
+                    console.log(response);
+                },
+                error: function (error) {
+                    $("#comment-response").text('评论发布失败'); 
+                    console.log(error);
+                }
+            })
+        } else {
+            $("#comment-response").text('评论内容不能为空'); 
+        }
+    });
+})
+function del_comment(id) {
+	url = '/comment/del/' + id + '/';
+    comment = '#comment-' + id;
+	$.get(url, function(result){
+        var message = result['message']
+        $("#comment-response").text(message); 
+    	console.log(result);
+  	});
+    $(comment).hide(500);
+}
+</script>
+{% endblock footer_script %}
+
+{% block content %}
+
+<!-- Single Blog Content Wrap -->
+<div class="wrapper section">
+<div class="row">
+    <!-- Blog Content -->
+    <div class="column column-75">
+        <p class="mb-0 clearfix">
+            <span class="category"><small>分类：{{blog.category}}</small></span>
+            <span class="float-right"><small>{{blog.time|date:'Y年m月d日'}}</small></span>
+        </p>
+        <h2 class="mb-0">{{blog.title}}</h2>
+        <p><i>Auhor</i> {{blog.author}}</p>
+
+        <div class="mb-2">
+            <img src="{{blog.image|thumbnail_url:'landscape'}}" class="responsive" alt="">
+        </div>
+        
+    
+        <div class="mb-2">
+        {% autoescape off %}
+        {{blog.content}}
+        {% endautoescape %}
+        </div>
+        
+        {% if user == blog.author %}
+        <div class="mb-2">
+            <a href="{% url 'edit_blog' blog.id %}" class="button button-small">编辑博客</a>
+            <a href="{% url 'delete_blog' blog.id %}" class="button button-small button-red">删除博客</a>
+        </div>
+        {% endif %}
+
+        <h3><i class="fa fa-quote-left" aria-hidden="true"></i> 评论</h3>
+
+        {% if comments %}
+        {% for comment in comments %}
+        <div class="comment mb-2" id="comment-{{comment.id}}">
+            <div class="comment-author">
+                {{comment.author}}
+            </div>
+            <div class="comment-meta">
+                <span class="comment-time">{{comment.time}}</span>
+                {% if comment.author == request.user %}
+                <span onclick="del_comment({{comment.id}})" class="comment-del-button float-right">&times; 删除此条</span>
+                {% endif %}
+            </div>
+
+            <div class="comment-content mb-1">
+                {{comment.content}}
+            </div>
+        </div>
+        {% endfor %}   
+        {% else %}
+        <p>暂无评论</p>
+        {% endif %}
+        <div id="comment-placeholder"></div>
+
+        <h5 class="submit">提交评论</h5>
+        {% if user.is_authenticated %}
+        <p class="mb-0"><small>欢迎您提交关此篇博客的相关评论，您的评论可能需要审核才能被公开显示。</small></p>
+        <textarea name="content" id="content" class="form-control mb-15"></textarea>
+        <button id="submit_comment" class="button button-sm button-primary">提交评论</button>
+        <p class="text-info" id="comment-response"></p>
+        {% else %}
+        <p>您需要登录才可以发表评论。请先<a href="{% url 'login' %}?next={% url 'blog_item' blog.id %}">登录您的账户</a>，或者<a href="{% url 'register' %}">注册新账户</a>。</p>
+        {% endif %}
+
+        
+    </div>
+
+    <!-- Related Blog Post -->
+    <div class="column column-25">
+
+        {% if related_blogs %}
+
+        <h4>相关博客</h4>
+        {% for blog in related_blogs %}
+        <!-- Single Related Blog Post -->
+        <div class="single-related-blog-post">
+            <img src="{{ blog.image|thumbnail_url:'small' }}" class="responsive" alt="">
+            <div class="cover">
+                <a href="{% url 'blog_item' blog.id %}">{{blog.title}}</a>
+                <p class="mb-0"><small>{{blog.content|striptags|truncatechars:'25'}}...</small></p>
+            </div>
+        </div>
+        {% endfor %}
+            
+        {% endif %}
+            
+    </div>
+
+</div>
+
+</div>
+
+{% endblock content %}

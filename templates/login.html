@@ -1,0 +1,52 @@
+{% extends "theme.html" %}
+
+{% block title %}用户登陆{% endblock title %}
+
+{% block content %}
+
+	<div class="wrapper section">
+        <h2>登陆</h2>
+        <div class="row">
+
+            {% if warning %}
+            <div class="warning">
+                {{warning}}
+            </div>
+            {% endif %}            
+
+            <div class="column">
+            {% if user.is_authenticated %}
+            <div class="mb-2">
+                <h5>Hi，{{user}}</h5>
+            </div>
+            <div class="mb-2">
+                <p>您已经登陆，如果需要更换账户登陆，请点击<a href="{% url 'logout' %}">退出</a></p>
+            </div>
+            {% else %}
+            <div class="cart-page-heading mb-2">
+                <h5>请登陆您的RayBlog账户</h5>
+            </div>
+
+            <form action="" class="mb-2" method="POST" >
+                {% csrf_token %}
+                <div class="row">
+                    <div class="column column-50 mb-3">
+                        <label for="username">用户名 <span>*</span></label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="用户名/手机号" value="" required="">
+                    </div>
+                    <div class="column column-50 mb-3">
+                        <label for="password">密码 <span>*</span></label>
+                        <input type="password" class="form-control" id="password" name="password" value="" required="">
+                    </div>
+                </div>
+
+                <input type="submit" class="btn essence-btn" value="登录">
+            </form>
+            <p>如果您还没有账户了请点击<a href="{% url 'register' %}" class="btn btn-sm btn-light">注册</a></p>
+            {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

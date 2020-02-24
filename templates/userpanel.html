@@ -1,0 +1,175 @@
+{% extends "theme.html" %}
+
+{% block title %}用户面板{% endblock title %}
+
+{% block footer_script %}
+<script>
+function del_category(id) {
+	url = '/category/del/' + id + '/';
+    category = '#category-' + id;
+	$.get(url, function(result){
+		var message = result['message']
+		$("#category-response").text(message);
+    	console.log(result);
+  	});
+    $(category).hide(500);
+}
+
+$("#addCategory").keyup(function(event){
+  if(event.keyCode ==13){
+        var category = $('#addCategory').val();
+		data = {
+		'category': category,
+		'csrfmiddlewaretoken': '{{ csrf_token }}'
+		};
+		$.ajax({
+			url: '{% url 'blog_add_category' %}',
+			type: 'post',
+			data: data,
+			success: function (response) {               
+				var message = response['message'];
+				var id = response['id'];
+				var comment_html = 
+						'<div class="chip" id="category-' + id + '">' +
+							category +
+							'<span class="closebtn" onclick="del_category(' + id + ')">&times;</span>' +
+                        '</div>' +
+                        '<div id="category-placeholder"></div>'
+				$("#category-response").text(message);
+				$("#category-placeholder").replaceWith(comment_html);
+			},
+			error: function (error) {
+				console.log(error);
+			}
+		})
+
+    }
+});
+</script>
+{% endblock footer_script %}
+
+{% block content %}
+
+<!-- ##### Blog Wrapper Area End ##### -->
+<div class="wrapper section">
+
+	{% if warning %}
+	<div class="warning">
+		{{warning}}
+	</div>
+	{% endif %} 
+
+	<div class="row">
+
+		<div class="column column-75 mb-2">
+			
+			{% if blogs %}
+			<div class="row">
+				<div class="column mb-50">
+					<h3>我的文章</h3>
+					<table class="shrink">
+					<thead>
+						<tr>
+						<th>#</th>
+						<th>标题</th>
+						<th>日期</th>
+						<th class="s">摘要</th>
+						<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for blog in blogs %}
+						<tr>
+						<td>{{blog.id}}</td>
+						<td><a href="{% url 'blog_item' blog.id %}">{{blog.title|striptags|truncatechars:10}}</a></td>
+						<td>{{blog.time|date:'Y-m-d'}}</td>
+						<td class="s">{{blog.content|striptags|truncatechars:20}}...</td>
+						<td>
+							<a href="{% url 'edit_blog' blog.id %}">编辑博客</a> | 
+							<a href="{% url 'delete_blog' blog.id %}?next={{request.path}}">删除博客</a>
+						</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+					</table>
+				</div>
+			</div>
+			{% endif %}
+
+			{% if blogs.paginator.num_pages > 1 %} 
+			<div class="row">
+				<div class="column">
+				<!-- Pagination -->
+				<nav class="pagination">
+					{% if blogs.has_previous %}
+					<a class="page-link" href="?page={{ blogs.previous_page_number }}"><i class="icon icon-arrow-left"></i></a>
+					{% endif %}
+					{% for page in pagerange %}
+					{% if page == blogs.number %}
+					<a class="page-link active" href="#">{{ page }}</a>
+					{% elif page == '...' %}
+					<span class="ellipsis">{{ page }}</span>
+					{% else  %}
+					<a class="page-link" href="?page={{ page }}">{{ page }}</a>
+					{% endif %}
+					{% endfor %}
+					{% if blogs.has_next %}
+					<a class="page-link" href="?page={{ blogs.next_page_number }}"><i class="icon icon-arrow-right"></i></a>
+					{% endif %}
+				</nav>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+
+		<div class="column column-25">
+			<!-- ##### Single Widget ##### -->
+			<div class="mb-2">
+				<!-- Widget Title -->
+				<h6 class="mb-1">Hi, {{user}}</h6>
+				<a href="{% url 'profile' %}" class="button button-small">编辑账户</a>
+				<a href="{% url 'logout' %}" class="button button-small button-red">退出登录</a>
+			</div>
+
+			<div class="mb-2">
+				<!-- Widget Title -->
+				<h5 class="mb-1">管理评论</h5>
+				{% if comments %}
+				<a href="{% url 'all_comments' %}" class="button button-small button-outline">管理所有评论</a>
+				<ul class="comment-list">
+				{% for comment in comments %}
+				<li><a href="{% url 'blog_item' comment.blog.id %}#comment-{{comment.id}}">{{comment.content|truncatechars:25}}</a> @ {{comment.blog|truncatechars:10}}</li>
+				{% endfor %}
+				</ul>
+				{% else %}
+				<p>暂无评论</p>
+				{% endif %}
+			</div>
+
+			<div class="mb-2">
+				<!-- Widget Title -->
+				<h5 class="mb-0">管理分类</h5>
+				{% if user.is_staff %}
+				<p class="mb-1"><small>点击分类标签的&times;可以删除该分类</small></p>
+				{% endif %}
+				<div class="category-chips mb-2">
+				{% if categories %}
+				{% for category in categories %}
+					<div class="chip" id="category-{{category.id}}">
+						{{category.name}}
+						{% if user.is_staff %}<span class="closebtn" onclick="del_category({{category.id}})">&times;</span>{% endif %}
+					</div>
+				{% endfor %}					
+				{% else %}
+				<p>暂无分类</p>
+				{% endif %}
+				<div id="category-placeholder"></div>
+				</div>
+				<input type="text" id="addCategory" placeholder="添加分类">
+				<p id="category-response" class="text-info"></p>
+			</div>
+		</div>
+		
+	</div>
+</div>
+{% endblock content %}

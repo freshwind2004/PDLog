@@ -1,0 +1,110 @@
+{% extends "theme.html" %}
+
+{% load thumbnail %}
+
+{% block title %}{% if blog %}编辑博客{% else %}创建博客{% endif %}{% endblock title %}
+
+{% block header_script %}
+<script src="https://cdn.ckeditor.com/4.13.1/basic/ckeditor.js"></script>
+{{ rewrite|safe }}
+{% endblock header_script %}
+
+{% block footer_script %}
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
+{% endblock footer_script %}
+
+{% block content %}
+<div class="wrapper section">
+    {% if blog %}
+    <h2>编辑博客</h2>
+    {% else %}
+    <h2>创建博客</h2>
+    {% endif %}
+
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}	
+            <div class="mt-2 clearfix">
+                {% if warning %}
+                <div class="warning">
+                    {% for line in warning %}
+                    {{ line|safe }}<br>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="row">
+
+                    <div class="column column-75 mb-2">
+                        <div class="mb-1">
+                            <label for="title">标题 <span>*</span></label>
+                            <input type="text" class="form-control" id="title" placeholder="博客标题"" name="title" value="{{ blog.title }}" required>
+                        </div>
+
+                        <div class="mb-1">
+                            <div class="row">
+                                <div class="column column-50">
+                                    <label for="category">选择类别</label>
+                                    <select name="category" class="form-control">
+                                        
+                                        {% if blog %}
+                                        {% for category in categories %}
+                                        <option value="{{category.id}}" {% if blog.category == category %} selected="selected"{% endif %}>{{category}}</option>
+                                        {% endfor %}
+                                        {% else %}
+                                        {% for category in categories %}
+                                        <option value="{{category.id}}">{{category}}</option>
+                                        {% endfor %}
+                                        {% endif %}
+
+                                    </select>
+                                </div>
+                                <div class="column column-50">
+                                    <label for="content">或添加新类别</label>
+                                    <input type="text" class="form-control" name="add_category" id="add_category">
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div>
+                            <label for="content">博客内容 <span>*</span></label>
+                            <textarea class="form-control" name="content" value="" placeholder="请输入博客正文内容">{{ blog.content }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="column column-25 mb-2">
+
+                        {% if blog %}
+                        <div class="mb-2">
+                            <p class="mb-0"><small>点击下面按钮查看博客页面</small></p>
+                            <a href="{% url 'blog_item' blog.id %}" class="button button-outline">查看博客</a>
+                        </div>
+                        {% endif %}
+
+                        {% if blog %}
+                        <div class="mb-3">
+                            <label for="image">已上传照片</label>
+                            <img src="{{ blog.image|thumbnail_url:'small' }}" class="responsive" alt="{{ blog.title }}配图"/>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="mb-3">
+                            <label for="image">上传图片</label>
+                            <input type="file" name="image" accept="image/*">
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="button" type="submit" value="{% if blog %}修改博客{% else %}创建博客{% endif %}">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+    </form>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,524 @@
+/* 自适应布局 */
+
+.row .column.column-25 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.row .column.column-50 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.row .column.column-75 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 40rem) {
+  .row .column.column-25 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .row .column.column-50 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .row .column.column-75 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+}
+
+/* 基本组件 */
+a {
+  color: #1192d0;
+}
+
+a:focus,
+a:hover {
+  color: #008cff;
+}
+
+label,
+legend {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+.warning {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #ffecb9;
+  margin-bottom: 1rem;
+}
+
+.danger {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #ff9a9a;
+  margin-bottom: 1rem;
+}
+
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  background-color: #1192d0;
+  border: 0.1rem solid #1192d0;
+}
+
+.button.button-outline,
+button.button-outline,
+input[type="button"].button-outline,
+input[type="reset"].button-outline,
+input[type="submit"].button-outline {
+  color: #1192d0;
+}
+
+.button:focus,
+.button:hover,
+button:focus,
+button:hover,
+input[type="button"]:focus,
+input[type="button"]:hover,
+input[type="reset"]:focus,
+input[type="reset"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:hover {
+  background-color: #008cff;
+  border-color: #008cff;
+  color: #fff;
+  outline: 0;
+}
+
+.button-small,
+input.button-small {
+  font-size: 1rem;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  padding: 0 1.5rem;
+}
+
+.button-large,
+input.button-large {
+  font-size: 1.4rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  padding: 0 2rem;
+}
+
+.button-red,
+input.button-red {
+  background-color: #db3535;
+  border-color: #db3535;
+}
+
+.button-red:focus,
+.button-red:hover,
+input.button-red:focus,
+input.button-red:hover {
+  background-color: red;
+  border-color: red;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
+.mr-2 {
+  margin-right: 2rem;
+}
+
+.ml-1 {
+  margin-left: 1rem;
+}
+
+.ml-2 {
+  margin-left: 2rem;
+}
+
+.text-info {
+  color: #0065b8;
+  font-size: 1.4rem;
+}
+
+img.responsive {
+  width: 100%;
+}
+
+/* 小贴片 */
+
+.chip {
+  display: inline-block;
+  padding: 0 1rem;
+  font-size: 1.4rem;
+  line-height: 3rem;
+  border-radius: 1.5rem;
+  background-color: #f1f1f1;
+}
+
+.chip img {
+  float: left;
+  margin: 0 1rem 0 -2.5rem;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.chip .closebtn {
+  padding-left: 1rem;
+  color: #888;
+  font-weight: bold;
+  float: right;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+.chip .closebtn:hover {
+  color: #000;
+}
+
+/* 折叠内容 */
+
+.collapse-content {
+  padding: 1rem 1.5rem;
+  border-radius: 0.25rem;
+  display: none;
+  overflow: hidden;
+  background-color: #fcfcfc;
+}
+
+/* 小屏幕隐藏 */
+
+@media (max-width: 40rem) {
+  .hide-sm {
+    display: none !important;
+  }
+}
+
+/* 表格横置显示 */
+table {
+  font-size: 1.4rem;
+}
+
+@media (max-width: 40rem) {
+  table.transform {
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+  table.transform thead {
+    float: left;
+    display: block;
+  }
+  table.transform thead tr,
+  table.transform thead td,
+  table.transform thead th {
+    display: block;
+  }
+  table.transform tbody td:first-child,
+  table.transform thead th:first-child {
+    padding-left: 1.5rem;
+  }
+  table.transform tbody {
+    display: block;
+    display: -webkit-box;
+    width: auto;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  table.transform tbody tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+  table.transform tbody td,
+  table.transform thead th {
+    display: block;
+  }
+
+  table.shrink .s {
+    display: none;
+  }
+}
+
+
+/* 包裹器 */
+.wrapper {
+  padding: 1rem 1.5rem;
+}
+
+.wrapper.section {
+  margin: 2rem 0;
+}
+
+/* 导航栏 */
+
+.navbar {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fafafa;
+}
+
+.navbar .section {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .button {
+  padding: 0 1.5rem;
+}
+
+.navbar h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0 2rem 0 0;
+}
+
+.navbar .navbar-links a {
+  margin-right: 1rem;
+}
+
+.navbar .navbar-links a:last-child {
+  margin-right: 0;
+}
+
+.navbar .section a.button {
+  margin: 0 0.25rem;
+}
+
+form.inline-form {
+  display: flex;
+  margin: 0 0.5rem 0;
+}
+
+form.inline-form input {
+  margin: 0;
+}
+
+form.inline-form input[type="text"] {
+  margin-right: -1px;
+  max-width: 18rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+form.inline-form input[type="submit"] {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.navbar a#menu-button {
+  display: none;
+}
+
+/* 导航栏自适应菜单 */
+
+@media (max-width: 60rem) {
+  .navbar .navbar-links {
+    display: none;
+  }
+  .navbar a#menu-button {
+    float: right;
+    margin-left: 0.5rem;
+    display: block;
+  }
+  .navbar.responsive {
+    position: relative;
+  }
+  .navbar.responsive .navbar-links {
+    display: block;
+    padding: 0.5rem 0;
+    position: absolute;
+    left: 0;
+    top: 5rem;
+    width: 100%;
+    background-color: #fafafa;
+    z-index: 1;
+  }
+  .navbar.responsive .navbar-links a {
+    display: block;
+    margin: 0 1.5rem;
+    line-height: 3.6rem;
+    border-bottom: 1px solid #fcfcfc;
+  }
+  .navbar.responsive .navbar-links a:last-child {
+    border-bottom: none;
+  }
+}
+
+/* 分页显示 */
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a, .pagination span {
+  float: left;
+  padding: .25rem 1rem;
+  margin: 0 .25rem;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #1192d0;
+  color: white;
+  border-radius: .25rem;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #fafafa;
+  border-radius: .25rem;
+}
+
+/* 页脚 */
+
+.footer {
+  background-color: #ececec;
+  padding: 1rem 1.5rem;
+}
+
+.footer .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* 博客列表 */
+.single-blog {
+  position: relative;
+}
+
+.single-blog .post-meta {
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  position: absolute;
+  color: #fcfcfc;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.single-blog .post-meta h5 {
+  font-weight: bold;
+}
+
+.single-blog .post-meta .tags {
+  margin: 0.25rem 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.single-blog .post-meta .tags span {
+  font-size: 1.2rem;
+  border-radius: 0.25rem;
+  padding: 0rem 0.5rem;
+}
+
+.single-blog .post-meta .tags span.category {
+  background-color: #156db3;
+}
+
+.single-blog .post-meta .tags span.time {
+  background-color: #15b351;
+}
+
+.single-blog .post-meta a {
+  color: white;
+}
+
+.single-related-blog-post {
+  position: relative;
+}
+
+.single-related-blog-post .cover {
+  position: absolute;
+  margin-bottom: 5px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.single-related-blog-post .cover a {
+  color: white;
+  font-size: 1.8rem;
+}
+
+/* 评论 */
+
+.comment {
+  padding: .5rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: .5rem;
+  background-color: #fafafa;
+}
+
+.comment .comment-author {
+  color: #1192d0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.comment .comment-meta {
+  margin-bottom: .5rem;
+  font-size: 1.2rem;
+}
+
+.comment .comment-meta .comment-del-button {
+  float: right;
+  cursor: pointer;
+  padding: 0 .5rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 1rem;
+  background-color: #ff9a9a;
+  color: #fcfcfc;
+}
+
+.comment .comment-meta .comment-time {
+  display: inline-block;
+  padding: 0 .5rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: .25rem;
+  background-color: #e2e0e0;
+  color: #fcfcfc;
+}
+
+ul.comment-list {
+  font-size: 1.4rem;
+}
+
+ul.comment-list li {
+  list-style-type: disc;
+  margin: 0;
+}
+
+/* 用户面板 */
+
+.category-chips .chip {
+  margin-bottom: .5rem;
+}

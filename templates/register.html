@@ -1,0 +1,58 @@
+{% extends "theme.html" %}
+
+{% block title %}注册用户{% endblock title %}
+
+{% block content %}
+
+<div class="wrapper section">
+
+	<h2>注册账户</h2>
+
+		{% if warning %}
+		<div class="warning">
+			{{warning}}
+		</div>
+		{% endif %}
+	
+		{% if error %}
+		<div class="danger">
+			{{error}}
+		</div>
+		{% endif %}
+		
+		<div class="row">
+
+		<div class="column">
+			<div class="mb-2">
+				<h5>注册一个新的RayBlog账户</h5>
+			</div>
+
+			<form action="" class="mb-2" method="POST" >
+				{% csrf_token %}
+				<div class="row row-wrap">
+					<div class="column column-50">
+						<label for="username">用户名 <span>*</span></label>
+						<input type="text" class="form-control" id="username" name="username" placeholder="设置用户名（中\英文字符）" value="" required="">
+					</div>
+					<div class="column column-50">
+						<label for="nickname">昵称</label>
+						<input type="text" class="form-control" id="nickname" name="nickname" placeholder="您的昵称（选填）" value="">
+					</div>
+					<div class="column column-50">
+						<label for="password">密码 <span>*</span></label>
+						<input type="password" class="form-control" id="password" name="password" placeholder="请设置6位以上密码" value="" required="">
+					</div>
+					<div class="column column-50">
+						<label for="repeatpw">重复密码 <span>*</span></label>
+						<input type="password" class="form-control" id="repeatpw" name="repeatpw" placeholder="重复输入密码（防止误输）" value="" required="">
+					</div>
+				</div>
+
+				<input type="submit" class="btn essence-btn" value="注册">
+			</form>
+			<p>如果您已有账户了请点击<a href="{% url 'login' %}" class="btn btn-sm btn-light">登陆</a></p>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

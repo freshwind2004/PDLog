@@ -1,0 +1,61 @@
+{% extends "theme.html" %}
+
+{% load thumbnail %}
+
+{% block title %}博客目录{% endblock title %}
+
+{% block content %}
+
+    <div class="wrapper section">
+
+        
+        {% if keyword %}
+        <h3 class="mb-0">搜索关键词：<i>{{keyword}}</i></h3>
+        <p>共找到 <b>{{count}}</b> 条内容</p>
+        {% endif %}
+
+
+        <div class="row row-wrap">
+           {% for blog in blogs %}
+            <!-- Single Blog Area -->
+            <div class="column column-50">
+                <div class="single-blog mb-2">
+                    <img class="responsive" src="{{blog.image|thumbnail_url:'landscape'}}" alt="">
+                    <div class="post-meta">
+                        <H5 class="mb-0"><a href="{% url 'blog_item' blog.id %}">{{blog.title}}</a></h5>
+                        <p class="tags"><span class="category">分类：{{blog.category}}</span><span class="time">{{blog.time|date:'Y年m月d日'}}</span></p>
+                        <p class="mb-0">{{blog.content|striptags|truncatechars:'25'}}...</p>
+                    </div>
+                </div>
+            </div>             
+            {% endfor %}
+        </div>
+        {% if blogs.paginator.num_pages > 1 %} 
+        <div class="row">
+            <div class="column">
+            <!-- Pagination -->
+            <nav class="pagination">
+                {% if blogs.has_previous %}
+                <a class="page-link" href="?page={{ blogs.previous_page_number }}{% if keyword %}&s={{ keyword }}{% endif %}"><i class="icon icon-arrow-left"></i></a>
+                {% endif %}
+                {% for page in pagerange %}
+                {% if page == blogs.number %}
+                <a class="page-link active" href="#">{{ page }}</a>
+                {% elif page == '...' %}
+                <span class="ellipsis">{{ page }}</span>
+                {% else  %}
+                <a class="page-link" href="?page={{ page }}{% if keyword %}&s={{ keyword }}{% endif %}">{{ page }}</a>
+                {% endif %}
+                {% endfor %}
+                {% if blogs.has_next %}
+                <a class="page-link" href="?page={{ blogs.next_page_number }}{% if keyword %}&s={{ keyword }}{% endif %}"><i class="icon icon-arrow-right"></i></a>
+                {% endif %}
+            </nav>
+            </div>
+        </div>
+        {% endif %}
+
+        </div>
+    </div>
+
+{% endblock content %}
