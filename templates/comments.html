@@ -1,40 +1,28 @@
 {% extends "theme.html" %}
-
-{% block title %}管理所有评论{% endblock title %}
-
-{% block footer_script %}
-<script>
-
-</script>
-{% endblock footer_script %}
-
+{% load i18n %}
+{% block title %}{% trans '管理所有评论' %}{% endblock title %}
 {% block content %}
-
 <!-- ##### comment Wrapper Area End ##### -->
 <div class="wrapper section">
-
 	{% if warning %}
 	<div class="warning">
 		{{warning}}
 	</div>
 	{% endif %} 
-
 	<div class="row">
-
 		<div class="column column-75 mb-2">
-			
 			{% if comments %}
 			<div class="row">
 				<div class="column mb-50">
-					<h3>我的评论</h3>
+					<h3>{% trans '我的评论' %}</h3>
 					<table class="shrink">
 					<thead>
 						<tr>
 						<th>#</th>
-						<th>内容</th>
-						<th>日期</th>
-						<th class="s">博客</th>
-						<th>操作</th>
+						<th>{% trans '内容' %}</th>
+						<th>{% trans '日期' %}</th>
+						<th class="s">{% trans '博客' %}</th>
+						<th>{% trans '操作' %}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -42,9 +30,9 @@
 						<tr>
 						<td>{{comment.id}}</td>
 						<td><a href="{% url 'blog_item' comment.blog.id %}">{{comment.content|striptags|truncatechars:20}}...</a></td>
-						<td>{{comment.time|date:'Y-m-d'}}</td>
+						<td>{{comment.time|date}}</td>
 						<td class="s">{{comment.blog.title|striptags|truncatechars:10}}</td>
-						<td><a href="{% url 'blog_comment_del' comment.id %}?next={{request.path}}">删除评论</a></td>
+						<td><a href="{% url 'blog_comment_del' comment.id %}?next={{request.path}}">{% trans '删除评论' %}</a></td>
 						</tr>
 						{% endfor %}
 					</tbody>
@@ -52,7 +40,6 @@
 				</div>
 			</div>
 			{% endif %}
-
 			{% if comments.paginator.num_pages > 1 %} 
 			<div class="row">
 				<div class="column">
@@ -78,18 +65,15 @@
 			</div>
 			{% endif %}
 		</div>
-
 		<div class="column column-25">
 			<!-- ##### Single Widget ##### -->
 			<div class="mb-2">
 				<!-- Widget Title -->
 				<h6 class="mb-1">Hi, {{user}}</h6>
 				<p class="mb-1"><small>您一共发布了 <b>{{count}}</b> 条评论。</small></p>
-				<a href="{% url 'userpanel' %}" class="button button-small button-outline">返回用户面板</a>
+				<a href="{% url 'userpanel' %}" class="button button-small button-outline">{% trans '返回用户面板' %}</a>
 			</div>
-
 		</div>
-		
 	</div>
 </div>
 {% endblock content %}

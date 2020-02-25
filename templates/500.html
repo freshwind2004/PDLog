@@ -1,17 +1,15 @@
 {% extends "theme.html" %}
-
-{% block title %}500 服务器错误{% endblock title %}
-
+{% load i18n %}
+{% block title %}{% trans '500 服务器错误' %}{% endblock title %}
 {% block content %}
-
 <!-- ##### Blog Wrapper Area End ##### -->
 <div class="wrapper section">
 	<div class="row">
 		<div class="column" style="margin-top: 5rem; margin-bottom: 8rem;">
-			<h3 class="mb-0">500 服务器错误</h3>
-			<h5>遭遇了可怕的服务器错误！你把服务器搞瘫了！</h5>
-			<p class="mb-0">兄嘚，你是不是摊上事了？你好像把我们的服务器弄坏了。</p>
-			<p>稍等几秒再重试一下，如果真的坏了你就溜之大吉吧。</p>
+			<h3 class="mb-0">{% trans '500 服务器错误' %}</h3>
+			<h5>{% trans '遭遇了可怕的服务器错误！你把服务器搞瘫了！' %}</h5>
+			<p class="mb-0">{% trans '兄嘚，你是不是摊上事了？你好像把我们的服务器弄坏了。' %}</p>
+			<p>{% trans '稍等几秒再重试一下，如果真的坏了你就溜之大吉吧。' %}</p>
 		</div>
 	</div>
 </div>

@@ -7,6 +7,8 @@ from django.http import JsonResponse
 # 查询easy_thumbnails生成的略缩图类
 from easy_thumbnails.files import get_thumbnailer
 
+from django.utils.translation import gettext_lazy as _
+
 # 分页工具
 from django.core.paginator import Paginator
 def pagination(queryset, display_num, page_num):
@@ -85,11 +87,11 @@ def create_blog(request):
             image = request.FILES['image']
             blog.image = image
         except:
-            warning = ['未提交图片!']
+            warning = [_('未提交图片!')]
 
         blog.save()
 
-        warning += ['博客创建成功!', '5秒钟后跳转至文章页面']
+        warning += [_('博客创建成功!'), _('5秒钟后跳转至文章页面')]
         rewrite = '<meta http-equiv="refresh" content="5;URL=' + reverse('blog_item', kwargs={'id':blog.id}) + '" />'
         return render(request, 'blog-edit.html', {'blog': blog, 'categories':categories, 'warning': warning, 'rewrite': rewrite})
 
@@ -110,10 +112,10 @@ def edit_blog(request, id):
         content = request.POST.get('content')
 
         if title == '' :
-            warning += ['标题字段为空']
+            warning += [_('标题字段为空')]
         else:
             if title == blog.title:
-                warning += ['标题未修改']
+                warning += [_('标题未修改')]
             else:
                 blog.title = title
 
@@ -137,10 +139,10 @@ def edit_blog(request, id):
                 thumbnailer.delete()
             blog.image = image
         except:
-            warning += ['图片未修改']
+            warning += [_('图片未修改')]
         
         blog.save()
-        warning += ['文章保存成功！']
+        warning += [_('文章保存成功！')]
 
         return render(request, 'blog-edit.html', {'warning':warning, 'blog': blog, 'categories':categories})
 
@@ -181,7 +183,7 @@ def blog_comment(request, id):
             comment.content = content
             comment.author = request.user
             comment.save()
-            message = '评论发表成功！'
+            message = _('评论发表成功！')
             return JsonResponse({'message':message})
 
 @login_required
@@ -190,7 +192,7 @@ def blog_comment_del(request, id):
     operator = request.user
     if comment.author == operator:
         comment.delete()
-        return JsonResponse({'message':'评论删除成功!'})
+        return JsonResponse({'message':_('评论删除成功!')})
 
 @login_required
 def blog_add_category(request):
@@ -198,14 +200,14 @@ def blog_add_category(request):
         caregory = request.POST.get('category')
         if caregory:
             new_category = BlogCategory.objects.create(name=caregory)
-            return JsonResponse({'message':'博客类别创建成功！', 'id':new_category.id})
+            return JsonResponse({'message':_('博客类别创建成功！'), 'id':new_category.id})
 
 @login_required
 def blog_category_del(request, id):
     category = get_object_or_404(BlogCategory, pk=id)
     if request.user.is_staff:
         category.delete()
-        return JsonResponse({'message':'类别删除成功!'})
+        return JsonResponse({'message':_('类别删除成功!')})
 
 def page_not_found(request, exception):
  return render(request, '404.html')

@@ -1,20 +1,19 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="{{ LANGUAGE_CODE }}">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="熟人相亲平台，真实相亲信息，熟人关系保障">
-    <meta name="keywords" content="相亲,熟人相亲,婚恋,红娘,男朋友,女朋友,结婚">
-    <meta name="author" content="RayBlog">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>{% block title %}{% endblock title %} - RayBlog | 锐博客网</title>
+    <title>{% block title %}{% endblock title %} - {% trans '锐博客网' %}</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="{% static "img/favicon.png" %}">
@@ -27,9 +26,7 @@
     <link rel="stylesheet" href="{% static "css/spectre-icons.css" %}">
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     {% block css_style %}{% endblock css_style %}
-
     {% block header_script %}{% endblock header_script %}
-
 </head>
 
 <body>
@@ -39,22 +36,22 @@
             <h1><a href="{% url 'blog_list' %}">Rayblog</a></h1>
             <div class="navbar-links">
                 {% if user.is_authenticated %}
-                <a href="{% url 'userpanel' %}" class="text-secondary" title="用户面板">用户面板</a>
-                <a href="{% url 'create_blog' %}" class="text-secondary" title="创建博客">创建博客</a>
+                <a href="{% url 'userpanel' %}" class="text-secondary" title="{% trans '用户面板' %}">{% trans '用户面板' %}</a>
+                <a href="{% url 'create_blog' %}" class="text-secondary" title="{% trans '创建博客' %}">{% trans '创建博客' %}</a>
                 {% endif %}	
-                <a href="{% url 'blog_list' %}" class="text-secondary">博客</a>
-                <a href="{% url 'about' %}" class="text-secondary" title="关于本站">关于</a>                
+                <a href="{% url 'blog_list' %}" class="text-secondary" title="{% trans '博客' %}">{% trans '博客' %}</a>
+                <a href="{% url 'about' %}" class="text-secondary" title="{% trans '关于本站' %}">{% trans '关于' %}</a>                
             </div>
         </div>
         <div class="section">
             <form action="{% url 'search' %}" method="get" class="hide-sm inline-form">
-                <input type="text" name="s" placeholder="输入关键字">
-                <input type="submit" value="搜索">
+                <input type="text" name="s" placeholder="{% trans '输入关键字' %}">
+                <input type="submit" value="{% trans '搜索' %}">
             </form>
 
-            <a href="{% url 'userpanel' %}" class="button button-outline" title="用户面板"><i class="icon icon-people"></i></a>
+            <a href="{% url 'userpanel' %}" class="button button-outline" title="{% trans '用户面板' %}"><i class="icon icon-people"></i></a>
             {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}" class="button button-outline" title="退出{{ user }}的登陆状态"><i class="icon icon-shutdown"></i></a>
+            <a href="{% url 'logout' %}" class="button button-outline" title="{% blocktrans %}退出{{ user }}登陆状态{% endblocktrans %}"><i class="icon icon-shutdown"></i></a>
             {% endif %}
             <a href="javascript:void(0);" id="menu-button" class="button button-primary" onclick="showMenu()"><i class="icon icon-menu"></i></a>
         </div>
@@ -71,24 +68,32 @@
         <div class="content">
             <!-- Single Widget Area -->
             <section>
-                <h5><a href="/" class="text-light">Rayblog 锐博客</a></h5>
+                <h5><a href="/" class="text-light">{% trans '锐博客网' %}</a></h5>
             </section>
             <section>
-                <a href="{% url 'blog_list' %}" class="text-secondary">博客</a>
-                <a href="{% url 'about' %}" class="text-secondary">关于</a>
+                <a href="{% url 'blog_list' %}" class="text-secondary">{% trans '博客' %}</a>
+                <a href="{% url 'about' %}" class="text-secondary">{% trans '关于' %}</a>
             </section>
         </div>
 
+        <!-- <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}"/>
+            <select name="language">
+                {% for language in LANGUAGES %}
+                    <option value="{{ language.0 }}"{% if language.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                    {{ language.1 }}
+                {% endfor %}
+            </select>
+            <input type="submit" value="Go"/>
+        </form> -->
 
         <p class="footer-copyright">
-            <small>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved. <a href="/" class="text-light">RayBlog 锐博客</a> 保留所有相关权利.</small>
+            <small>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved. <a href="/" class="text-light">{% trans '锐博客网' %}</a> {% trans '保留所有相关权利' %}.</small>
         </p>
 
     </footer>
     <!-- ##### Footer Area End ##### -->
-
-    
-
     <!-- JS CDNs -->
     <!-- <script src="//cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script> -->
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>

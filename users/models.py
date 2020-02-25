@@ -4,17 +4,19 @@ from django.db import models
 # 引入 AbstractUser
 from django.contrib.auth.models import AbstractUser
 
+from django.utils.translation import gettext_lazy as _
+
 #创建用户类
 class User(AbstractUser):
 
-    telephone   = models.CharField(blank=True, max_length=11, verbose_name='电话')
-    nickname    = models.CharField(blank=True, max_length=10, verbose_name='昵称')
+    telephone   = models.CharField(blank=True, max_length=11, verbose_name=_('电话'))
+    nickname    = models.CharField(blank=True, max_length=10, verbose_name=_('昵称'))
 
     # USERNAME_FIELD = 'telephone'
     # 在这里，我们不改变用户名的名称为 telephone， 所以注释掉
 
     class Meta:
-        verbose_name = '用户'
+        verbose_name = _('用户')
         verbose_name_plural = verbose_name
         ordering = ['-id']
 

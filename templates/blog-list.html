@@ -1,20 +1,13 @@
 {% extends "theme.html" %}
-
+{% load i18n %}
 {% load thumbnail %}
-
-{% block title %}博客目录{% endblock title %}
-
+{% block title %}{% trans '博客目录' %}{% endblock title %}
 {% block content %}
-
     <div class="wrapper section">
-
-        
         {% if keyword %}
-        <h3 class="mb-0">搜索关键词：<i>{{keyword}}</i></h3>
-        <p>共找到 <b>{{count}}</b> 条内容</p>
+        <h3 class="mb-0">{% trans '搜索关键词：' %}<i>{{keyword}}</i></h3>
+        <p>{% blocktrans %}共找到 <b>{{count}}</b> 条内容{% endblocktrans %}</p>
         {% endif %}
-
-
         <div class="row row-wrap">
            {% for blog in blogs %}
             <!-- Single Blog Area -->
@@ -23,7 +16,7 @@
                     <img class="responsive" src="{{blog.image|thumbnail_url:'landscape'}}" alt="">
                     <div class="post-meta">
                         <H5 class="mb-0"><a href="{% url 'blog_item' blog.id %}">{{blog.title}}</a></h5>
-                        <p class="tags"><span class="category">分类：{{blog.category}}</span><span class="time">{{blog.time|date:'Y年m月d日'}}</span></p>
+                        <p class="tags"><span class="category">{% trans '分类：' %}{{blog.category}}</span><span class="time">{{blog.time|date}} </span></p>
                         <p class="mb-0">{{blog.content|striptags|truncatechars:'25'}}...</p>
                     </div>
                 </div>
@@ -54,8 +47,6 @@
             </div>
         </div>
         {% endif %}
-
         </div>
     </div>
-
 {% endblock content %}

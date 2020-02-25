@@ -1,0 +1,582 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-25 20:24+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\pages\models.py:12
+#, fuzzy
+#| msgid "分类："
+msgid "分类名"
+msgstr "Category: "
+
+#: .\pages\models.py:17
+msgid "博客分类"
+msgstr "Blog Category"
+
+#: .\pages\models.py:26 .\templates\blog-edit.html:34
+#: .\templates\userpanel.html:65
+msgid "标题"
+msgstr "Title"
+
+#: .\pages\models.py:27
+#, fuzzy
+#| msgid "选择类别"
+msgid "类别"
+msgstr "Choose a category"
+
+#: .\pages\models.py:28 .\templates\comments.html:22
+msgid "内容"
+msgstr "Content"
+
+#: .\pages\models.py:29 .\pages\models.py:53
+msgid "作者"
+msgstr "Author"
+
+#: .\pages\models.py:30
+msgid "题图"
+msgstr "Cover Image"
+
+#: .\pages\models.py:31 .\pages\models.py:52 .\templates\comments.html:23
+#: .\templates\userpanel.html:66
+msgid "日期"
+msgstr "Date"
+
+#: .\pages\models.py:35 .\templates\blog-edit.html:60
+msgid "博客内容"
+msgstr "Blog content"
+
+#: .\pages\models.py:50 .\templates\comments.html:24 .\templates\theme.html:42
+#: .\templates\theme.html:74
+msgid "博客"
+msgstr "Blogs"
+
+#: .\pages\models.py:51
+#, fuzzy
+#| msgid "评论内容不能为空"
+msgid "评论内容"
+msgstr "Comment content is empty"
+
+#: .\pages\views.py:90
+msgid "未提交图片!"
+msgstr "No image uploaded!"
+
+#: .\pages\views.py:94
+msgid "博客创建成功!"
+msgstr "Blog successfully created!"
+
+#: .\pages\views.py:94
+msgid "5秒钟后跳转至文章页面"
+msgstr "Redirect to your blog in 5 sec"
+
+#: .\pages\views.py:115
+msgid "标题字段为空"
+msgstr "Empty title"
+
+#: .\pages\views.py:118
+msgid "标题未修改"
+msgstr "Title untouched"
+
+#: .\pages\views.py:142
+msgid "图片未修改"
+msgstr "Image untouched"
+
+#: .\pages\views.py:145
+msgid "文章保存成功！"
+msgstr "Blog successfully saved!"
+
+#: .\pages\views.py:186
+msgid "评论发表成功！"
+msgstr "Comment successfully submitted!"
+
+#: .\pages\views.py:195
+msgid "评论删除成功!"
+msgstr "Comment successfully deleted!"
+
+#: .\pages\views.py:203
+msgid "博客类别创建成功！"
+msgstr "Blog category successfully created!"
+
+#: .\pages\views.py:210
+msgid "类别删除成功!"
+msgstr "Blog category successfully deleted!"
+
+#: .\templates\404.html:3 .\templates\404.html:9
+msgid "404 未找到"
+msgstr "404 Not Found"
+
+#: .\templates\404.html:10
+msgid "找不到了找不到了！"
+msgstr "Oooh, oops, not found, indeed. "
+
+#: .\templates\404.html:11
+msgid "兄嘚，你到底需要看啥？"
+msgstr "Hey bro, what are your looking for?"
+
+#: .\templates\404.html:12
+msgid "反正你请求的地址找不到任何数据，搜索看看吧。"
+msgstr "The url you requested responds nothing, try the search instead."
+
+#: .\templates\500.html:3 .\templates\500.html:9
+msgid "500 服务器错误"
+msgstr "500 Server Error"
+
+#: .\templates\500.html:10
+msgid "遭遇了可怕的服务器错误！你把服务器搞瘫了！"
+msgstr ""
+"We are suffering from horrible server error! Are your responsible for that?!"
+
+#: .\templates\500.html:11
+msgid "兄嘚，你是不是摊上事了？你好像把我们的服务器弄坏了。"
+msgstr "Hey bro, it seems that you've broken our server, hav'nt you?"
+
+#: .\templates\500.html:12
+msgid "稍等几秒再重试一下，如果真的坏了你就溜之大吉吧。"
+msgstr ""
+"Retry in a few seconds, otherwise, run, run, run away before we start "
+"looking for you..."
+
+#: .\templates\about-us.html:3 .\templates\about-us.html:10
+msgid "关于我们"
+msgstr "About us"
+
+#: .\templates\blog-edit.html:4 .\templates\blog-edit.html:17
+#: .\templates\blog-item.html:79 .\templates\userpanel.html:79
+msgid "编辑博客"
+msgstr "Edit blog"
+
+#: .\templates\blog-edit.html:4 .\templates\blog-edit.html:19
+#: .\templates\blog-edit.html:82 .\templates\theme.html:40
+msgid "创建博客"
+msgstr "Create new"
+
+#: .\templates\blog-edit.html:35
+msgid "博客标题"
+msgstr "Blog title"
+
+#: .\templates\blog-edit.html:40
+msgid "选择类别"
+msgstr "Choose a category"
+
+#: .\templates\blog-edit.html:54
+msgid "或添加新类别"
+msgstr "Or add new category"
+
+#: .\templates\blog-edit.html:67
+msgid "点击下面按钮查看博客页面"
+msgstr "Click the button to redirect to blog"
+
+#: .\templates\blog-edit.html:68
+msgid "查看博客"
+msgstr "View blog"
+
+#: .\templates\blog-edit.html:73
+msgid "已上传照片"
+msgstr "Uploaded photo"
+
+#: .\templates\blog-edit.html:78
+msgid "上传图片"
+msgstr "Upload"
+
+#: .\templates\blog-edit.html:82
+msgid "修改博客"
+msgstr "Modify blog"
+
+#: .\templates\blog-item.html:24
+msgid "您刚发表的评论："
+msgstr "You just commented:"
+
+#: .\templates\blog-item.html:36
+msgid "评论发布失败"
+msgstr "Failed to comment"
+
+#: .\templates\blog-item.html:41
+msgid "评论内容不能为空"
+msgstr "Comment content is empty"
+
+#: .\templates\blog-item.html:64 .\templates\blog-list.html:19
+msgid "分类："
+msgstr "Category: "
+
+#: .\templates\blog-item.html:80 .\templates\userpanel.html:80
+msgid "删除博客"
+msgstr "Delete blog"
+
+#: .\templates\blog-item.html:83
+msgid "评论"
+msgstr "Comments"
+
+#: .\templates\blog-item.html:93
+msgid "删除此条"
+msgstr "Delete blog"
+
+#: .\templates\blog-item.html:102 .\templates\userpanel.html:133
+msgid "暂无评论"
+msgstr "No comment yet"
+
+#: .\templates\blog-item.html:105 .\templates\blog-item.html:109
+msgid "提交评论"
+msgstr "Post a comment"
+
+#: .\templates\blog-item.html:107
+msgid "欢迎您提交关此篇博客的相关评论，您的评论可能需要审核才能被公开显示。"
+msgstr ""
+"You are welcomed to leave your comment. Comments might need review before "
+"published."
+
+#: .\templates\blog-item.html:112
+msgid "您需要登录才可以发表评论。"
+msgstr "Please login to leave a comment"
+
+#: .\templates\blog-item.html:112
+msgid "请"
+msgstr "Please "
+
+#: .\templates\blog-item.html:112
+msgid "登录您的账户"
+msgstr "login your account"
+
+#: .\templates\blog-item.html:112
+msgid "，"
+msgstr ","
+
+#: .\templates\blog-item.html:112
+msgid "或者"
+msgstr "Or "
+
+#: .\templates\blog-item.html:112
+msgid "注册新账户"
+msgstr "register new account"
+
+#: .\templates\blog-item.html:112
+msgid "。"
+msgstr "."
+
+#: .\templates\blog-list.html:4
+msgid "博客目录"
+msgstr "Blog List"
+
+#: .\templates\blog-list.html:8
+msgid "搜索关键词："
+msgstr "Search keyword: "
+
+#: .\templates\blog-list.html:9
+#, python-format
+msgid "共找到 <b>%(count)s</b> 条内容"
+msgstr "Found <b>%(count)s</b> item(s)"
+
+#: .\templates\comments.html:3 .\templates\userpanel.html:126
+msgid "管理所有评论"
+msgstr "Manage all comments"
+
+#: .\templates\comments.html:17
+msgid "我的评论"
+msgstr "My comments"
+
+#: .\templates\comments.html:25 .\templates\userpanel.html:68
+msgid "操作"
+msgstr "Manage"
+
+#: .\templates\comments.html:35
+msgid "删除评论"
+msgstr "Delete comment"
+
+#: .\templates\comments.html:74
+#, fuzzy
+#| msgid "用户面板"
+msgid "返回用户面板"
+msgstr "Userpanel"
+
+#: .\templates\login.html:3
+msgid "用户登陆"
+msgstr "User login"
+
+#: .\templates\login.html:7 .\templates\register.html:44
+msgid "登陆"
+msgstr "Login"
+
+#: .\templates\login.html:22
+msgid "您已经登陆，如果需要更换账户登陆，请点击"
+msgstr ""
+"You've been login, if you would like to switch to another account, please "
+"click "
+
+#: .\templates\login.html:22
+msgid "退出"
+msgstr "log out"
+
+#: .\templates\login.html:26
+msgid "请登陆您的账户"
+msgstr "Please login your account"
+
+#: .\templates\login.html:33 .\templates\register.html:26
+msgid "用户名"
+msgstr "Username"
+
+#: .\templates\login.html:34
+msgid "用户名/手机号"
+msgstr "username or mobile"
+
+#: .\templates\login.html:37 .\templates\profile.html:121
+#: .\templates\register.html:34
+msgid "密码"
+msgstr "Password"
+
+#: .\templates\login.html:42
+msgid "登录"
+msgstr "Login"
+
+#: .\templates\login.html:44
+msgid "如果您还没有账户了请点击"
+msgstr "If you do not have an account, please click "
+
+#: .\templates\login.html:44 .\templates\register.html:42
+msgid "注册"
+msgstr "Register"
+
+#: .\templates\profile.html:3
+msgid "编辑用户"
+msgstr "Edit profile"
+
+#: .\templates\profile.html:28
+msgid "更改资料失败"
+msgstr "Failed to update your profile"
+
+#: .\templates\profile.html:57
+msgid "删除失败"
+msgstr "Failed to delete"
+
+#: .\templates\profile.html:62
+msgid "您忘了填写用户名！"
+msgstr "You forgot username"
+
+#: .\templates\profile.html:73
+msgid "编辑账户信息"
+msgstr "Edit account details"
+
+#: .\templates\profile.html:88
+msgid "修改账户资料"
+msgstr "Modify your account"
+
+#: .\templates\profile.html:89
+msgid "添加电话将会方便您登录。添加电子邮件将会方便找回密码。"
+msgstr ""
+"You could login with your mobile number, and recover your password with "
+"email."
+
+#: .\templates\profile.html:94
+msgid "用户名(不可修改)"
+msgstr "Username (ineditable)"
+
+#: .\templates\profile.html:98 .\templates\register.html:30
+#: .\users\models.py:13
+msgid "昵称"
+msgstr "Nickname"
+
+#: .\templates\profile.html:102
+msgid "移动电话"
+msgstr "Mobile number"
+
+#: .\templates\profile.html:106
+msgid "电子邮件"
+msgstr "Email"
+
+#: .\templates\profile.html:111
+msgid "修改资料"
+msgstr "Modify profile"
+
+#: .\templates\profile.html:114 .\templates\profile.html:129
+msgid "修改密码"
+msgstr "Modify password"
+
+#: .\templates\profile.html:115
+msgid "您的密码不得少于6位数。修改密码后需要您重新登录。"
+msgstr ""
+"Please provide a password no less than 6 characters. You need re-login after "
+"change your password."
+
+#: .\templates\profile.html:122 .\templates\register.html:35
+msgid "请设置6位以上密码"
+msgstr "Password no less than 6 characters"
+
+#: .\templates\profile.html:125 .\templates\register.html:38
+msgid "重复密码"
+msgstr "Repeat your password"
+
+#: .\templates\profile.html:126
+msgid "重复输入密码(防止误输)"
+msgstr "Repeat your password (prevent typerror)"
+
+#: .\templates\profile.html:133
+msgid "删除账户？"
+msgstr "Delete Account?"
+
+#: .\templates\profile.html:136
+msgid ""
+"如果您确定删除您的账户，请在输入框内输入您的<strong>用户名</strong>，并点击确"
+"认删除。您的账户和所有相关数据将会被立即删除，并且无法恢复。"
+msgstr ""
+"If you are sure to delete your account, please enter your <strong> username "
+"</strong> in the input box and click confirm deletion. Your account and all "
+"related data will be deleted immediately and cannot be recovered."
+
+#: .\templates\profile.html:139
+msgid "确认删除"
+msgstr "Confirm Deletion"
+
+#: .\templates\register.html:3
+msgid "注册用户"
+msgstr "Become a user"
+
+#: .\templates\register.html:6
+msgid "注册账户"
+msgstr "Register account"
+
+#: .\templates\register.html:20
+msgid "注册一个新账户"
+msgstr "Register a new account"
+
+#: .\templates\register.html:27
+msgid "设置用户名（中\\英文字符）"
+msgstr "Username (UTF8 supported)"
+
+#: .\templates\register.html:31
+msgid "您的昵称（选填）"
+msgstr "Your nickname (optional)"
+
+#: .\templates\register.html:39
+msgid "重复输入密码（防止误输）"
+msgstr "Repeat your password (prevent typerror)"
+
+#: .\templates\register.html:44
+msgid "如果您已有账户了请点击"
+msgstr "If you have account please click "
+
+#: .\templates\theme.html:16 .\templates\theme.html:71
+#: .\templates\theme.html:92
+msgid "锐博客网"
+msgstr "Rayblog"
+
+#: .\templates\theme.html:39 .\templates\theme.html:52
+#: .\templates\userpanel.html:3
+msgid "用户面板"
+msgstr "Userpanel"
+
+#: .\templates\theme.html:43
+msgid "关于本站"
+msgstr "About us"
+
+#: .\templates\theme.html:43 .\templates\theme.html:75
+msgid "关于"
+msgstr "About"
+
+#: .\templates\theme.html:48
+msgid "输入关键字"
+msgstr "Search..."
+
+#: .\templates\theme.html:49
+msgid "搜索"
+msgstr "Go"
+
+#: .\templates\theme.html:54
+#, python-format
+msgid "退出%(user)s登陆状态"
+msgstr "Logout as %(user)s"
+
+#: .\templates\theme.html:92
+msgid "保留所有相关权利"
+msgstr "All rights reserved"
+
+#: .\templates\userpanel.html:60
+msgid "我的文章"
+msgstr "My blogs"
+
+#: .\templates\userpanel.html:67
+msgid "摘要"
+msgstr "Excerpts"
+
+#: .\templates\userpanel.html:119
+msgid "编辑账户"
+msgstr "Edit account"
+
+#: .\templates\userpanel.html:120
+msgid "退出登录"
+msgstr "Logout"
+
+#: .\templates\userpanel.html:124
+msgid "管理评论"
+msgstr "Your comments"
+
+#: .\templates\userpanel.html:138
+msgid "管理分类"
+msgstr "Blog categories"
+
+#: .\templates\userpanel.html:140
+msgid "点击分类标签的&times;可以删除该分类"
+msgstr "Click &times; to delete the category"
+
+#: .\templates\userpanel.html:151
+msgid "暂无分类"
+msgstr "No category yet"
+
+#: .\templates\userpanel.html:155
+msgid "添加分类"
+msgstr "Add new category"
+
+#: .\users\apps.py:6
+msgid "用户系统"
+msgstr "User System"
+
+#: .\users\models.py:12
+#, fuzzy
+#| msgid "移动电话"
+msgid "电话"
+msgstr "Mobile number"
+
+#: .\users\models.py:19
+#, fuzzy
+#| msgid "用户名"
+msgid "用户"
+msgstr "Username"
+
+#: .\users\views.py:63
+msgid "您输入的登陆信息不正确，请重试"
+msgstr "Wrong login credentials, please try again."
+
+#: .\users\views.py:83
+msgid "您选择的用户名已存在！请换一个"
+msgstr "The username has been taken, try another."
+
+#: .\users\views.py:94
+msgid "您输入的注册信息不正确"
+msgstr "Improper submit, try again."
+
+#: .\users\views.py:110
+msgid "资料修改成功！"
+msgstr "Profile updated."
+
+#: .\users\views.py:123
+msgid "无法删除！您的账户属于管理账户，请联系管理员。"
+msgstr "Your account does not allow to be cancelled "
+
+#: .\users\views.py:126
+msgid "账户已删除！如需使用本站，请重新注册账户。"
+msgstr "Account deleted! Register a new one if you plan to use our website."
+
+#: .\users\views.py:128
+msgid "您填写的用户名不正确，提交失败。"
+msgstr "Wrong username, try again."

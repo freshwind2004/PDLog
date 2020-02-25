@@ -39,6 +39,8 @@ urlpatterns = [
     path('comment/all/', pages.views.all_comments, name='all_comments'),
     path('category/add/', pages.views.blog_add_category, name='blog_add_category'),
     path('category/del/<int:id>/', pages.views.blog_category_del, name='blog_category_del'),
+    # 语言
+    path('i18n/', include('django.conf.urls.i18n')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 增加媒体文件链接
 
 handler404 = pages.views.page_not_found

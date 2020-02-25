@@ -11,6 +11,8 @@ from .models import User
 from pages.models import Blog, BlogCategory, BlogComment
 from pages.views import pagination
 
+from django.utils.translation import gettext_lazy as _
+
 # 重写登录验证方法，支持账户名和邮箱登录，可扩展其他登录
 class CustomBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None):
@@ -58,7 +60,7 @@ def log_in(request):
             else:
                 return redirect('userpanel')
         else:
-            return render(request, 'login.html', {'warning':'您输入的登陆信息不正确，请重试'})
+            return render(request, 'login.html', {'warning':_('您输入的登陆信息不正确，请重试')})
     else:
         return render(request, 'login.html')
 
@@ -78,7 +80,7 @@ def register(request):
         if username != '' and password == repeatpw != '' :
             try:
                 User.objects.get(username=username)
-                return render(request, 'register.html', {'error':'您选择的用户名已存在！请换一个'})
+                return render(request, 'register.html', {'error': _('您选择的用户名已存在！请换一个')})
             except User.DoesNotExist:
                 user = User.objects.create_user(username=username, password=password, nickname=nickname)
                 user.save()
@@ -89,7 +91,7 @@ def register(request):
                 else:
                     return redirect('userpanel')
         else:
-            return render(request, 'register.html', {'warning':'您输入的注册信息不正确'})
+            return render(request, 'register.html', {'warning': _('您输入的注册信息不正确')})
     else:
         return render(request, 'register.html')
 
@@ -105,7 +107,7 @@ def profile(request):
         user.nickname = nickname
         user.email = email
         user.save()
-        return JsonResponse({'message':'资料修改成功！'})
+        return JsonResponse({'message':_('资料修改成功！')})
     else:
         return render(request, 'profile.html')
 
@@ -118,9 +120,9 @@ def del_account(request):
         username = username.lower()
         if username == user.username :
             if user.is_staff or user.is_superuser:
-                return JsonResponse({'message':'无法删除！您的账户属于管理账户，请联系管理员。'})
+                return JsonResponse({'message':_('无法删除！您的账户属于管理账户，请联系管理员。')})
             else:
                 user.delete()
-                return JsonResponse({'message':'账户已删除！如需使用本站，请重新注册账户。','deleted':True})
+                return JsonResponse({'message':_('账户已删除！如需使用本站，请重新注册账户。'),'deleted':True})
         else:
-            return JsonResponse({'message':'您填写的用户名不正确，提交失败。'})
+            return JsonResponse({'message':_('您填写的用户名不正确，提交失败。')})
